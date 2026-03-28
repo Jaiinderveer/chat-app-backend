@@ -1,13 +1,10 @@
 const express = require('express');
 const app = express();
-
 app.use(express.json());
-
-// import routes
+const logger = require('./middleware/logger');
 const userRoutes = require('./routes/userRoutes');
-
 // use routes
-app.use('/api/users', userRoutes);
+app.use('/api/users',logger, userRoutes);
 
 app.get('/', (req, res) => {
     res.send('Server is running');

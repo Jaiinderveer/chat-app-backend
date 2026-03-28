@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const checkAuth = require('../middleware/checkAuth');
 
 // test route
-router.get('/test', (req, res) => {
+router.get('/test',checkAuth, (req, res) => {
     res.send('User route working');
 });
 router.get('/login', (req, res) => {
